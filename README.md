@@ -1,6 +1,6 @@
 # 🔒 Inactivo-Tool
 
-**Inactivo-Tool** es una multitool diseñada para pruebas de penetración, auditorías de seguridad y aprendizaje en ciberseguridad.  
+**Inactivo-Tool** es una multitool diseñada para diversas opciones de phishing... 
 Se ha creado con fines educativos y para uso **estrictamente legal** en entornos controlados.
 
 ⚠️ **Aviso**: El uso indebido de esta herramienta en sistemas sin autorización previa es ilegal.  
@@ -9,10 +9,8 @@ El autor no se hace responsable de cualquier daño o consecuencia derivada del u
 ---
 
 ## ✨ Características
-- Escaneo y análisis de redes.
-- Detección de vulnerabilidades comunes.
-- Herramientas de fuerza bruta controlada.
-- Reconocimiento pasivo y activo.
+- OSINT.
+- PHISING.
 - Funciones adaptadas para Kali Linux y Termux.
 
 ---
@@ -77,3 +75,4 @@ python inactivo.py
 Este proyecto está bajo la **Licencia MIT (Uso Ético)**.  
 Puedes usar, modificar y distribuir el código con fines educativos y legales.  
 Consulta el archivo [LICENSE](LICENSE) para más detalles.
+
